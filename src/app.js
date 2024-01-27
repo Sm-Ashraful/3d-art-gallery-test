@@ -19,5 +19,9 @@ app.use(cookieParser());
 
 import calculationRouter from "./routes/calculate.routes.js";
 app.use("/", calculationRouter);
+app.get('/', (req, res) => {
+  res.send('Hey this is my API running 🥳')
+})
+
 
 export { app };
