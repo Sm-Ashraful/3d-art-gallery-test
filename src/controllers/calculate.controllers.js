@@ -43,7 +43,7 @@ const CalculateController = asyncHandler(async (req, res) => {
   await res.status(200).send(
     JSON.stringify(
       {
-        "Days Booked": octoberStats.daysBooked.toString(),
+        "Days Booked During October": octoberStats.daysBooked.toString(),
         "Occupancy Rate": occupancyRate.toFixed(2) + "%",
         "Average Daily Rate": "$" + averageDailyRate.toFixed(2),
       },

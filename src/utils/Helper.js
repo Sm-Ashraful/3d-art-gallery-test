@@ -8,7 +8,7 @@ export async function streamToBuffer(stream) {
 }
 
 export function calculateMetrics(octoberStats) {
-  const occupancyRate = (octoberStats.daysBooked / 30) * 100;
+  const occupancyRate = (octoberStats.daysBooked / 31) * 100;
   const averageDailyRate =
     octoberStats.totalTripPrice / octoberStats.daysBooked;
   return { occupancyRate, averageDailyRate };
@@ -43,7 +43,7 @@ function calculateDaysInOctober(startDate, endDate) {
   const startDateMonth = startDate.getMonth();
   const endDateMonth = endDate.getMonth();
 
-  const MONTH_OCTOBER = 10;
+  const MONTH_OCTOBER = 9;
   const startDateInOctober = startDateMonth === MONTH_OCTOBER;
   const endDateInOctober = endDateMonth === MONTH_OCTOBER;
 
@@ -54,15 +54,15 @@ function calculateDaysInOctober(startDate, endDate) {
   } else if (startDateInOctober) {
     // Calculate the remaining days in October, including the start day
 
-    const remaining = Math.min(30, Math.max(0, 30 - startDate.getDate() + 1));
+    const remaining = Math.min(31, Math.max(0, 30 - startDate.getDate() + 1));
     return remaining;
   } else if (endDateInOctober) {
     // Calculate the remaining days in October, including the end day
-    const remainingDays = Math.min(30, endDate.getDate());
+    const remainingDays = Math.min(31, endDate.getDate());
     return remainingDays;
   } else if (startDateMonth < MONTH_OCTOBER && endDateMonth > MONTH_OCTOBER) {
     // The trip spans the entire month of October
-    return 30;
+    return 31;
   }
   // ... other logic for different cases ...
 }
