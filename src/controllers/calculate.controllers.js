@@ -32,21 +32,23 @@ const CalculateController = asyncHandler(async (req, res) => {
       const pdfInstance = await streamToBuffer(response.Body);
       const data = await pdf(pdfInstance);
       const { daysBooked, tripPrice } = calculateOctoberStats(data);
-      console.log("daysBooked", daysBooked,tripPrice)
+      console.log("daysBooked", daysBooked, tripPrice)
 
       octoberStats.daysBooked += daysBooked;
       octoberStats.totalTripPrice += tripPrice;
     } catch (error) {
-      throw new ApiError(400, "Something went wrong");
+      throw new ApiError(400, `PDF file is not accessible. ${error} `);
     }
   }
   const { occupancyRate, averageDailyRate } = calculateMetrics(octoberStats);
   await res.status(200).send(
     JSON.stringify(
       {
-        "Days Booked During October": octoberStats.daysBooked.toString(),
+        
+        "Days Booked": octoberStats.daysBooked.toString(),
         "Occupancy Rate": occupancyRate.toFixed(2) + "%",
         "Average Daily Rate": "$" + averageDailyRate.toFixed(2),
+        "Calculation Month": "October"
       },
       null,
       2
