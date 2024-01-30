@@ -25,7 +25,7 @@ https://3d-developer-task.s3.ap-south-1.amazonaws.com/27486932.pdf
 ```
 Live url: API END Point
 ```bash
-https://ashraful-greentest-1-five.vercel.app
+https://ashraful-greentest-1-five.vercel.app/calculate
 ```
 Test Input:
 ```bash
