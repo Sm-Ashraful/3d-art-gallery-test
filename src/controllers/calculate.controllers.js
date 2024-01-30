@@ -32,6 +32,7 @@ const CalculateController = asyncHandler(async (req, res) => {
       const pdfInstance = await streamToBuffer(response.Body);
       const data = await pdf(pdfInstance);
       const { daysBooked, tripPrice } = calculateOctoberStats(data);
+      console.log("daysBooked", daysBooked,tripPrice)
 
       octoberStats.daysBooked += daysBooked;
       octoberStats.totalTripPrice += tripPrice;

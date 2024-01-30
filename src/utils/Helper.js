@@ -54,7 +54,8 @@ function calculateDaysInOctober(startDate, endDate) {
   } else if (startDateInOctober) {
     // Calculate the remaining days in October, including the start day
 
-    const remaining = Math.min(31, Math.max(0, 30 - startDate.getDate() + 1));
+    const remaining = Math.min(31, Math.max(0, 31 - startDate.getDate() + 1));
+    
     return remaining;
   } else if (endDateInOctober) {
     // Calculate the remaining days in October, including the end day
@@ -63,6 +64,6 @@ function calculateDaysInOctober(startDate, endDate) {
   } else if (startDateMonth < MONTH_OCTOBER && endDateMonth > MONTH_OCTOBER) {
     // The trip spans the entire month of October
     return 31;
-  }
+  }else return 0;
   // ... other logic for different cases ...
 }
